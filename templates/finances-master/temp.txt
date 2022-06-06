@@ -1,0 +1,61 @@
+
+<center>
+<form class="form-inline" action="/transfer-money",method = 'POST' >
+  <div class="dropdown">
+    <div class="input-group">
+        <span class="input-group-addon"><p>-------Please select--------</p></span>
+            <select name="comp_select" class="selectpicker form-control">
+              {% for o in data %}
+              <option value="{{ o.name }}">{{ o.name }}</option>
+              {% endfor %}
+            </select>
+            &#8594
+            <select name="comp_select" class="selectpicker form-control">
+              {% for o in data %}
+              <option value="{{ o.name }}">{{ o.name }}</option>
+              {% endfor %}
+            </select>
+    </div>
+      <br>
+      <form name="amount" id="amountForm" action = "/transfer-money" method="post" novalidate>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Amount</label>
+                <input type="number" class="form-control" placeholder="1000" id="amount" name='amount' required data-validation-required-message="Please enter your the amount to transfer.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+</form>
+    <button class="btn btn-secondary dropdown-toggle text-right " type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Go</button>
+     </div>
+</form>
+</center>
+
+<form method="post" action="/transfer-money">
+  <select id="sender" name="cust_id">
+      {% for o in data %}
+      <option value="{{ o.name }}">{{ o.name }}</option>
+      {% endfor %}
+  </select>
+  <input type="submit" value="Submit">
+</form>
+
+<form method="post" action="/transfer-money">
+  <select id="receiver" name="receiver_id">
+      {% for o in data %}
+      <option value="{{ o.name }}">{{ o.name }}</option>
+      {% endfor %}
+  </select>
+  <input type="submit" value="Submit">
+</form>
+
+<form name="amount" id="amountForm" action = "/transfer-money" method="post" novalidate>
+  <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Amount</label>
+                <input type="number" class="form-control" placeholder="1000" id="amount" name='amount' required data-validation-required-message="Please enter your the amount to transfer.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+</form>
+<button type="submit" form="amountForm" value="Submit">Submit</button>
