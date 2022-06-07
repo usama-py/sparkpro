@@ -10,7 +10,7 @@ import MySQLdb.cursors
 #port = int(os.getenv('PORT'))
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bank'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://lzrkvgzfsidrjc:d4f285e33b206cb4da033cea6a1aa0a203f448d7bc0b98b41fdc389366de14a3@ec2-44-196-223-128.compute-1.amazonaws.com:5432/dcma9cm3p2i2io'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://kdtktrpsvcgfyi:59e68f7f0319b116f78ff826c59108db36fcaafedb716dee784bed2d54dbb823@ec2-52-73-184-24.compute-1.amazonaws.com:5432/debtdb7capatcd'
 #app.config['MYSQL_DB'] = 'bank'
 #app.config['MYSQL_HOST'] = 'localhost'
 #ySQL username
