@@ -21,7 +21,9 @@ mysql = MySQL(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-
+if __name__=="__main__":
+    app.run(host=os.getenv('IP', '0.0.0.0'),
+            port=int(os.getenv('PORT', 4444)))
 
 class Transaction_info(db.Model):
     cust_id = db.Column(db.Integer, unique=False, nullable=False)
