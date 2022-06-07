@@ -7,14 +7,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bank'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://sanuwkxmwtjfca:642c8077ae8af64d5aca602ce8f63ae14c09afda31f979f622b2e15bb71fb7b2@ec2-52-44-13-158.compute-1.amazonaws.com:5432/d35g5i6lsb6ot2'
-app.config['MYSQL_DB'] = 'bank'
-app.config['MYSQL_HOST'] = 'localhost'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bank'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://sanuwkxmwtjfca:642c8077ae8af64d5aca602ce8f63ae14c09afda31f979f622b2e15bb71fb7b2@ec2-52-44-13-158.compute-1.amazonaws.com:5432/d35g5i6lsb6ot2'
+#app.config['MYSQL_DB'] = 'bank'
+#app.config['MYSQL_HOST'] = 'localhost'
 #MySQL username
-app.config['MYSQL_USER'] = 'root'
+#app.config['MYSQL_USER'] = 'root'
 #MySQL password here in my case password is null so i left empty
-app.config['MYSQL_PASSWORD'] = ''
+#app.config['MYSQL_PASSWORD'] = ''
 mysql = MySQL(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -105,5 +105,5 @@ def transfer():
 #             'response' : 'I am the response'
 #         }
 #     return render_template('finances-master/test.html')
-app.debug = True
+app.debug = False
 app.run()
