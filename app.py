@@ -97,14 +97,4 @@ def transfer():
     return render_template("finances-master/transfer.html")
 
 
-# @app.route('/test', methods=['GET','POST'])
-# def test():
-#     if request.method == "POST":
-#         jsonData = request.get_json()
-#         print(jsonData)
-#         return {
-#             'response' : 'I am the response'
-#         }
-#     return render_template('finances-master/test.html')
-app.debug = False
-app.run()
+app.run(debug=True, port=33507)
