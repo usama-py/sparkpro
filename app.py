@@ -7,13 +7,13 @@ from flask import Flask,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
-port = int(os.getenv('PORT'))
+#port = int(os.getenv('PORT'))
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bank'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://sanuwkxmwtjfca:642c8077ae8af64d5aca602ce8f63ae14c09afda31f979f622b2e15bb71fb7b2@ec2-52-44-13-158.compute-1.amazonaws.com:5432/d35g5i6lsb6ot2'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://lzrkvgzfsidrjc:d4f285e33b206cb4da033cea6a1aa0a203f448d7bc0b98b41fdc389366de14a3@ec2-44-196-223-128.compute-1.amazonaws.com:5432/dcma9cm3p2i2io'
 #app.config['MYSQL_DB'] = 'bank'
-#app.config['MYSQL_HOST'] = '8080'
-#MySQL username
+#app.config['MYSQL_HOST'] = 'localhost'
+#ySQL username
 #app.config['MYSQL_USER'] = 'root'
 #MySQL password here in my case password is null so i left empty
 #app.config['MYSQL_PASSWORD'] = ''
@@ -68,10 +68,8 @@ def transfer():
         cust_id = int(cust_id)
         receiver_id = int(receiver_id)
         amt_withdrawn = int(amt_withdrawn)
-        print('here')
         entry = Transaction_info(cust_id=cust_id, receiver_id=receiver_id, amt_withdrawn=amt_withdrawn, withdraw_time=datetime.utcnow())
         db.session.add(entry)
-        print('here1')
         db.session.commit()
         conn = mysql.connection
         cursor = conn.cursor()
