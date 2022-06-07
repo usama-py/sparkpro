@@ -10,7 +10,7 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bank'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://sanuwkxmwtjfca:642c8077ae8af64d5aca602ce8f63ae14c09afda31f979f622b2e15bb71fb7b2@ec2-52-44-13-158.compute-1.amazonaws.com:5432/d35g5i6lsb6ot2'
 #app.config['MYSQL_DB'] = 'bank'
-#app.config['MYSQL_HOST'] = 'localhost'
+#app.config['MYSQL_HOST'] = '8080'
 #MySQL username
 #app.config['MYSQL_USER'] = 'root'
 #MySQL password here in my case password is null so i left empty
@@ -18,6 +18,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://sanuwkxmwtjfca:642c8077ae8af
 mysql = MySQL(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
 
 
 class Transaction_info(db.Model):
