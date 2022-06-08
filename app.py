@@ -6,12 +6,15 @@ from flask_migrate import Migrate
 from flask import Flask,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_mysqldb import MySQL
+import dj_database_url
 import MySQLdb.cursors
 #port = int(os.getenv('PORT'))
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bank'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://iiyvonnsewprdv:6311257ea413cd9965b89fd760fc72e523e8b06f6d1dfa41459601b6d8a52a7d@ec2-52-73-184-24.compute-1.amazonaws.com:5432/dc3irl4ve4ffbl'
+
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+
 #app.config['MYSQL_DB'] = 'bank'
 #app.config['MYSQL_HOST'] = 'localhost'
 #ySQL username
@@ -21,6 +24,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://iiyvonnsewprdv:6311257ea41
 mysql = MySQL(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+db_from_env = dj_database_url.config(conn_max_age=500)
+db['default'].update(db_from_env)
 
 if __name__=="__main__":
     app.run(host=os.getenv('IP', '0.0.0.0'),
