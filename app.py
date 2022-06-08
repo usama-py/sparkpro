@@ -1,12 +1,12 @@
-import json
+
 import os
 from datetime import datetime
-from urllib import response
+
 from flask_migrate import Migrate
 from flask import Flask,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_mysqldb import MySQL
-import dj_database_url
+
 import MySQLdb.cursors
 #port = int(os.getenv('PORT'))
 app = Flask(__name__)
@@ -24,8 +24,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://iiyvonnsewprdv:6311257ea41
 mysql = MySQL(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-db_from_env = dj_database_url.config(conn_max_age=500)
-db['default'].update(db_from_env)
+
 
 if __name__=="__main__":
     app.run(host=os.getenv('IP', '0.0.0.0'),
