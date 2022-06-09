@@ -62,11 +62,6 @@ def viewCustomers():
 
 @app.route("/transfer-money",methods=['GET','POST'])
 def transfer():
-    app.config['MYSQL_DB'] = 'sql6498675'
-    app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
-    # MySQL username
-    app.config['MYSQL_USER'] = 'sql6498675'
-    app.config['MYSQL_PASSWORD'] = 'wrJmLMRQMS'
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     # executing query
     cursor.execute("select * from customers_info")
@@ -107,6 +102,3 @@ def transfer():
         return render_template("finances-master/customers.html",data=data)
 
     return render_template("finances-master/transfer.html")
-
-if __name__=="__main__":
-    app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 4444)))
