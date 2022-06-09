@@ -16,12 +16,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://:sql6498675:wrJmLMRQMS@sql6.fre
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
-#app.config['MYSQL_DB'] = 'bank'
-#app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_DB'] = 'sql6498675'
+app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
 #ySQL username
-#app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_USER'] = 'sql6498675'
 #MySQL password here in my case password is null so i left empty
-#app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = 'wrJmLMRQMS'
 mysql = MySQL(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
