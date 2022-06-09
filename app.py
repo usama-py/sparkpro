@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://:sql6498675:wrJmLMRQMS@sql6.fre
 app.config['MYSQL_DB'] = 'sql6498675'
 app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
 #MySQL username
-app.config['MYSQL_USER'] = 'u4611@ec2-44-200-27-247.compute-1.amazonaws.com'
+app.config['MYSQL_USER'] = 'sql6498675'
 app.config['MYSQL_PASSWORD'] = 'wrJmLMRQMS'
 mysql = MySQL(app)
 db = SQLAlchemy(app)
@@ -62,6 +62,11 @@ def viewCustomers():
 
 @app.route("/transfer-money",methods=['GET','POST'])
 def transfer():
+    app.config['MYSQL_DB'] = 'sql6498675'
+    app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
+    # MySQL username
+    app.config['MYSQL_USER'] = 'sql6498675'
+    app.config['MYSQL_PASSWORD'] = 'wrJmLMRQMS'
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     # executing query
     cursor.execute("select * from customers_info")
