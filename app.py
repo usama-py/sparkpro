@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://:sql6498675:wrJmLMRQMS@sql6.fre
 app.config['MYSQL_DB'] = 'sql6498675'
 app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
 #MySQL username
-app.config['MYSQL_USER'] = 'sql6498675@ec2-52-8-112-233.us-west-1.compute.amazonaws.com'
+app.config['MYSQL_USER'] = 'sql6498675'
 app.config['MYSQL_PASSWORD'] = 'wrJmLMRQMS'
 mysql = MySQL(app)
 db = SQLAlchemy(app)
