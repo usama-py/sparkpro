@@ -94,7 +94,4 @@ def transfer():
 
 @app.route("/redirect-to-customers")
 def redirect():
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute("select * from customers_info")
-    data = cursor.fetchall()
-    return render_template("finances-master/redirect.html",data=data)
+    return render_template("finances-master/redirect.html")
