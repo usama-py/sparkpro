@@ -75,6 +75,7 @@ def transfer():
         cust_id = int(cust_id)
         receiver_id = int(receiver_id)
         amt_withdrawn = int(amt_withdrawn)
+        app.config['MYSQL_USER'] = 'sql6498675'
         entry = Transaction_info(cust_id=cust_id, receiver_id=receiver_id, amt_withdrawn=amt_withdrawn, withdraw_time=datetime.utcnow())
         db.session.add(entry)
         db.session.commit()
