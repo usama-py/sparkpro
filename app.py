@@ -1,20 +1,12 @@
-
-import os
 from datetime import datetime
-
 from flask_migrate import Migrate
 from flask import Flask,render_template,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_mysqldb import MySQL
 
 import MySQLdb.cursors
-#port = int(os.getenv('PORT'))
 app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/bank'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://u29825:Usama_984@124.123.182.224:3306/bank'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://iiyvonnsewprdv:6311257ea413cd9965b89fd760fc72e523e8b06f6d1dfa41459601b6d8a52a7d@ec2-52-73-184-24.compute-1.amazonaws.com:5432/dc3irl4ve4ffbl'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql6498675:wrJmLMRQMS@sql6.freemysqlhosting.net:3306/sql6498675'
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
 app.config['MYSQL_DB'] = 'sql6498675'
 app.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
@@ -62,11 +54,7 @@ def viewCustomers():
 
 @app.route("/transfer-money",methods=['GET','POST'])
 def transfer():
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    # executing query
-    cursor.execute("select * from customers_info")
-    # fetching all records from database
-    data = cursor.fetchall()
+
     if request.method == 'POST':
         '''Add entry to the database'''
         cust_id = request.form.get('sender')
@@ -100,6 +88,13 @@ def transfer():
 
         conn.commit()
         cursor.close()
-        return render_template("finances-master/customers.html",data=data)
+        return render_template("finances-master/redirect.html")
 
     return render_template("finances-master/transfer.html")
+
+@app.route("/redirect-to-customers")
+def redirect():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("select * from customers_info")
+    data = cursor.fetchall()
+    return render_template("finances-master/redirect.html",data=data)
